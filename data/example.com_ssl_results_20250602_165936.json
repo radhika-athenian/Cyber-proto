@@ -1,0 +1,47 @@
+[
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "AS207960 Test Intermediate - example.com"
+  },
+  {
+    "Issuer": {
+      "countryName": "US",
+      "organizationName": "DigiCert Inc",
+      "commonName": "DigiCert Global G3 TLS ECC SHA384 2020 CA1"
+    },
+    "Subject": {
+      "countryName": "US",
+      "stateOrProvinceName": "California",
+      "localityName": "Los Angeles",
+      "organizationName": "Internet Corporation for Assigned Names and Numbers",
+      "commonName": "*.example.com"
+    },
+    "Serial Number": "0AD893BAFA68B0B7FB7A404F06ECAF9A",
+    "Version": 3,
+    "Not Before": "Jan 15 00:00:00 2025 GMT",
+    "Not After": "Jan 15 23:59:59 2026 GMT",
+    "Days to Expiry": 227,
+    "is_expired": false,
+    "subdomain": "www.example.com"
+  },
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "dev.example.com"
+  },
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "m.example.com"
+  },
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "products.example.com"
+  },
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "support.example.com"
+  },
+  {
+    "error": "[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1028)",
+    "subdomain": "m.testexample.com"
+  }
+]

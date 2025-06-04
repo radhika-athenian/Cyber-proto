@@ -1,0 +1,55 @@
+[
+  {
+    "subdomain": "www.atheniantech.com",
+    "technologies": [
+      "Elementor",
+      "Swiper Slider",
+      "Font Awesome",
+      "WordPress",
+      "MySQL",
+      "jQuery",
+      "jQuery Migrate",
+      "Google Font API",
+      "PHP",
+      "Apache"
+    ]
+  },
+  {
+    "subdomain": "athena.atheniantech.com",
+    "technologies": [
+      "Google Font API",
+      "Nginx",
+      "Ubuntu"
+    ]
+  },
+  {
+    "subdomain": "www.athena.atheniantech.com",
+    "technologies": []
+  },
+  {
+    "subdomain": "latest.atheniantech.com",
+    "technologies": []
+  },
+  {
+    "subdomain": "ti.atheniantech.com",
+    "technologies": [
+      "React",
+      "webpack",
+      "Nginx",
+      "Next.js",
+      "Node.js",
+      "Ubuntu"
+    ]
+  },
+  {
+    "subdomain": "ti-admin.atheniantech.com",
+    "technologies": [
+      "React",
+      "webpack",
+      "Nginx",
+      "Next.js",
+      "Node.js",
+      "Ubuntu"
+    ]
+  }
+]

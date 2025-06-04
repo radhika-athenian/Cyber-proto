@@ -1,0 +1,34 @@
+[
+  {
+    "content": "admin@example.com : Passw0rd!",
+    "label": "sensitive"
+  },
+  {
+    "content": "Authorization: Bearer sk_live_ABC123SECRET",
+    "label": "sensitive"
+  },
+  {
+    "content": "username: root, password: toor123",
+    "label": "sensitive"
+  },
+  {
+    "content": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM...",
+    "label": "sensitive"
+  },
+  {
+    "content": "mysql -u admin -p123456 database_name",
+    "label": "sensitive"
+  },
+  {
+    "content": "aws_access_key_id=AKIAIOSFODNN7EXAMPLE",
+    "label": "sensitive"
+  },
+  {
+    "content": "email=test@example.com&password=secretpass",
+    "label": "sensitive"
+  },
+  {
+    "content": "curl -X POST https://api.example.com -H 'Authorization: Bearer TOKEN123'",
+    "label": "sensitive"
+  }
+]

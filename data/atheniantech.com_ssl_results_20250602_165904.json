@@ -1,0 +1,81 @@
+[
+  {
+    "Issuer": {
+      "countryName": "US",
+      "stateOrProvinceName": "Arizona",
+      "localityName": "Scottsdale",
+      "organizationName": "GoDaddy.com, Inc.",
+      "organizationalUnitName": "http://certs.godaddy.com/repository/",
+      "commonName": "Go Daddy Secure Certificate Authority - G2"
+    },
+    "Subject": {
+      "commonName": "atheniantech.com"
+    },
+    "Serial Number": "C1A1E13719655E46",
+    "Version": 3,
+    "Not Before": "Apr  8 13:57:17 2025 GMT",
+    "Not After": "Apr  6 05:04:25 2026 GMT",
+    "Days to Expiry": 307,
+    "is_expired": false,
+    "subdomain": "www.atheniantech.com"
+  },
+  {
+    "Issuer": {
+      "countryName": "US",
+      "organizationName": "Let's Encrypt",
+      "commonName": "R11"
+    },
+    "Subject": {
+      "commonName": "athena.atheniantech.com"
+    },
+    "Serial Number": "05D4F9169DCC25836DADF182B2CA6B050271",
+    "Version": 3,
+    "Not Before": "Apr 21 15:43:58 2025 GMT",
+    "Not After": "Jul 20 15:43:57 2025 GMT",
+    "Days to Expiry": 48,
+    "is_expired": false,
+    "subdomain": "athena.atheniantech.com"
+  },
+  {
+    "error": "[Errno 11001] getaddrinfo failed",
+    "subdomain": "www.athena.atheniantech.com"
+  },
+  {
+    "error": "[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)",
+    "subdomain": "latest.atheniantech.com"
+  },
+  {
+    "Issuer": {
+      "countryName": "US",
+      "organizationName": "Let's Encrypt",
+      "commonName": "R11"
+    },
+    "Subject": {
+      "commonName": "ti.atheniantech.com"
+    },
+    "Serial Number": "065B601390E68AFC6C86AC4870C94FF9854B",
+    "Version": 3,
+    "Not Before": "May 28 07:05:29 2025 GMT",
+    "Not After": "Aug 26 07:05:28 2025 GMT",
+    "Days to Expiry": 84,
+    "is_expired": false,
+    "subdomain": "ti.atheniantech.com"
+  },
+  {
+    "Issuer": {
+      "countryName": "US",
+      "organizationName": "Let's Encrypt",
+      "commonName": "R11"
+    },
+    "Subject": {
+      "commonName": "ti-admin.atheniantech.com"
+    },
+    "Serial Number": "0548CF7EF978DA473F2B3A3F7DF201CB29A9",
+    "Version": 3,
+    "Not Before": "May 28 07:06:55 2025 GMT",
+    "Not After": "Aug 26 07:06:54 2025 GMT",
+    "Days to Expiry": 84,
+    "is_expired": false,
+    "subdomain": "ti-admin.atheniantech.com"
+  }
+]

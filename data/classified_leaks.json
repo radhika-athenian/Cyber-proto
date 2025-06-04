@@ -1,0 +1,16 @@
+[
+  {
+    "content": "john@example.com : john123",
+    "timestamp": "2025-06-03T11:04:28.847827",
+    "type": "email",
+    "source": "sample1.txt",
+    "label": "benign"
+  },
+  {
+    "content": "admin@example.com password: adminpass",
+    "timestamp": "2025-06-03T11:04:28.848749",
+    "type": "credentials",
+    "source": "sample1.txt",
+    "label": "sensitive"
+  }
+]

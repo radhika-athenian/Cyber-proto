@@ -1,0 +1,39 @@
+[
+  {
+    "subdomain": "www.example.com",
+    "ip": "23.48.245.107",
+    "ports": [
+      {
+        "port": 53,
+        "protocol": "tcp",
+        "state": "closed"
+      },
+      {
+        "port": 80,
+        "protocol": "tcp",
+        "state": "open"
+      },
+      {
+        "port": 443,
+        "protocol": "tcp",
+        "state": "open"
+      }
+    ]
+  },
+  {
+    "subdomain": "m.testexample.com",
+    "ip": "13.248.169.48",
+    "ports": [
+      {
+        "port": 80,
+        "protocol": "tcp",
+        "state": "open"
+      },
+      {
+        "port": 443,
+        "protocol": "tcp",
+        "state": "open"
+      }
+    ]
+  }
+]
