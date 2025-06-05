@@ -1,0 +1,11 @@
+streamlit
+pandas
+plotly
+requests
+beautifulsoup4
+Wappalyzer
+python-dateutil
+pytz
+scikit-learn
+numpy
+joblib
