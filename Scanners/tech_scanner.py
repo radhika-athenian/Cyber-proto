@@ -4,6 +4,7 @@ import os
 import re
 import requests
 from Wappalyzer import Wappalyzer, WebPage
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 def is_valid_hostname(hostname):
@@ -21,32 +22,29 @@ def load_domains(asset_file):
     return [d for d in domains if is_valid_hostname(d)]
 
 
-def detect_technologies(domains):
-    """Use Wappalyzer to detect tech stack on domains"""
+def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
+    url = f"https://{domain}"
+    print(f"[+] Scanning {url}")
+    try:
+        response = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
+        webpage = WebPage.new_from_response(response)
+        tech = wappalyzer.analyze(webpage)
+        if isinstance(tech, set):
+            tech = list(tech)
+    except Exception as e:
+        print(f"[-] Failed to scan {domain}: {e}")
+        tech = []
+    return {"subdomain": domain, "technologies": tech}
+
+
+def detect_technologies(domains, workers: int = 50, timeout: int = 3):
+    """Use Wappalyzer to detect tech stack on domains in parallel."""
     wappalyzer = Wappalyzer.latest()
     results = []
-
-    for domain in domains:
-        url = f"https://{domain}"
-        print(f"[+] Scanning {url}")
-        try:
-            response = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
-            webpage = WebPage.new_from_response(response)
-            tech = wappalyzer.analyze(webpage)
-
-            # Ensure JSON serializable (convert set to list)
-            if isinstance(tech, set):
-                tech = list(tech)
-
-        except Exception as e:
-            print(f"[-] Failed to scan {domain}: {e}")
-            tech = []
-
-        results.append({
-            "subdomain": domain,
-            "technologies": tech
-        })
-
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = [executor.submit(_scan_domain, d, wappalyzer, timeout) for d in domains]
+        for future in as_completed(futures):
+            results.append(future.result())
     return results
 
 
