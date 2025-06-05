@@ -1,0 +1,30 @@
+[
+  {
+    "content": "Visit our website at https://example.com for more info.",
+    "label": "benign"
+  },
+  {
+    "content": "Contact admin@example.com for support queries.",
+    "label": "benign"
+  },
+  {
+    "content": "This paste is for test purposes only. No data here.",
+    "label": "benign"
+  },
+  {
+    "content": "Public disclosure notice for security researchers.",
+    "label": "benign"
+  },
+  {
+    "content": "Here's my blog on cybersecurity practices.",
+    "label": "benign"
+  },
+  {
+    "content": "API usage: GET /status returns uptime information.",
+    "label": "benign"
+  },
+  {
+    "content": "Our GitHub repo is at github.com/example",
+    "label": "benign"
+  }
+]
