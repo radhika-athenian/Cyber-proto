@@ -37,7 +37,19 @@ def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
     return {"subdomain": domain, "technologies": tech}
 
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/Scanners/tech_scanner.py
 def detect_technologies(domains, workers: int = 4, timeout: int = 10):
+========
+def detect_technologies(domains, workers: int = 50, timeout: int = 3):
+>>>>>>>> origin/lpxcmz-codex/debug-scripts-and-create-streamlit-dashboard:Scanners/tech_scanner.py
+=======
+<<<<<<< HEAD:Scanners/tech_scanner.py
+def detect_technologies(domains, workers: int = 50, timeout: int = 3):
+=======
+def detect_technologies(domains, workers: int = 4, timeout: int = 10):
+>>>>>>> origin/main:src/Scanners/tech_scanner.py
+>>>>>>> origin/lpxcmz-codex/debug-scripts-and-create-streamlit-dashboard
     """Use Wappalyzer to detect tech stack on domains in parallel."""
     wappalyzer = Wappalyzer.latest()
     results = []

@@ -10,7 +10,19 @@ from concurrent.futures import ThreadPoolExecutor
 OUTPUT_DIR = "data"
 DOMAIN = "example.com"  # Replace or pass as argument
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/Scanners/subdomain_scanner.py
 def run_sublist3r(domain, timeout: int = 300):
+========
+def run_sublist3r(domain, timeout: int = 60):
+>>>>>>>> origin/lpxcmz-codex/debug-scripts-and-create-streamlit-dashboard:Scanners/subdomain_scanner.py
+=======
+<<<<<<< HEAD:Scanners/subdomain_scanner.py
+def run_sublist3r(domain, timeout: int = 60):
+=======
+def run_sublist3r(domain, timeout: int = 300):
+>>>>>>> origin/main:src/Scanners/subdomain_scanner.py
+>>>>>>> origin/lpxcmz-codex/debug-scripts-and-create-streamlit-dashboard
     """Runs Sublist3r to find subdomains."""
     print(f"[+] Scanning subdomains for: {domain}")
     try:
