@@ -3,3 +3,5 @@ __pycache__/
 data/
 AI/models/*.pkl
 AI/models/*.json
+ssl_check.log
+*.log
