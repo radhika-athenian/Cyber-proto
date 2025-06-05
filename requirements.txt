@@ -2,7 +2,6 @@ streamlit
 pandas
 plotly
 requests
-python-nmap
 beautifulsoup4
 Wappalyzer
 python-dateutil

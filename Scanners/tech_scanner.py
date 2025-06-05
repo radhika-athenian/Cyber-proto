@@ -37,7 +37,7 @@ def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
     return {"subdomain": domain, "technologies": tech}
 
 
-def detect_technologies(domains, workers: int = 4, timeout: int = 10):
+def detect_technologies(domains, workers: int = 50, timeout: int = 3):
     """Use Wappalyzer to detect tech stack on domains in parallel."""
     wappalyzer = Wappalyzer.latest()
     results = []

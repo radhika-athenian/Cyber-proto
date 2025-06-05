@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 OUTPUT_DIR = "data"
 DOMAIN = "example.com"  # Replace or pass as argument
 
-def run_sublist3r(domain, timeout: int = 300):
+def run_sublist3r(domain, timeout: int = 60):
     """Runs Sublist3r to find subdomains."""
     print(f"[+] Scanning subdomains for: {domain}")
     try:

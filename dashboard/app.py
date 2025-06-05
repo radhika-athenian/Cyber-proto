@@ -15,6 +15,19 @@ from Scanners.tech_scanner import detect_technologies
 DATA_DIR = "data"
 
 
+def add_styles():
+    """Basic CSS styling to mimic UpGuard look."""
+    st.markdown(
+        """
+        <style>
+        .main {background-color: #f5f8fa;}
+        .sidebar .sidebar-content {background-color: #ffffff;}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def load_risk_scores(file_obj=None):
     """Load risk scores from an uploaded file or the default path."""
     if file_obj is not None:
@@ -73,8 +86,8 @@ def render_scanners():
 
     with st.form("scanner_form"):
         domain = st.text_input("Enter domain to scan (e.g., example.com):")
-        ports = st.text_input("Port range", "1-1000")
-        workers = st.slider("Worker threads", 1, 10, 4)
+        ports = st.text_input("Port range", "1-100")
+        workers = st.slider("Concurrent workers", 10, 200, 100)
         submit = st.form_submit_button("Run Scanners")
 
     if submit:
@@ -86,17 +99,17 @@ def render_scanners():
         subdomains = run_sublist3r(domain)
         resolved_subdomains = resolve_subdomains(subdomains)
         st.success(f"Found {len(resolved_subdomains)} resolved subdomains")
-        st.json(resolved_subdomains)
+        st.dataframe(pd.DataFrame(resolved_subdomains))
 
         st.info("Running Port Scanner...")
         port_results = scan_ports(resolved_subdomains, ports=ports, workers=workers)
         st.success("Port scanning complete")
-        st.json(port_results)
+        st.dataframe(pd.DataFrame(port_results))
 
         st.info("Running SSL Checker...")
         ssl_results = scan_ssl(resolved_subdomains, workers=workers)
         st.success("SSL scan complete")
-        st.json(ssl_results)
+        st.dataframe(pd.DataFrame(ssl_results))
 
         st.info("Detecting Technologies...")
         tech_stack = detect_technologies(
@@ -104,7 +117,7 @@ def render_scanners():
             workers=workers,
         )
         st.success("Technology fingerprinting complete")
-        st.json(tech_stack)
+        st.dataframe(pd.DataFrame(tech_stack))
 
         if st.checkbox("💾 Save all results to /data"):
             from datetime import datetime
@@ -127,6 +140,7 @@ def render_scanners():
 def main() -> None:
     """Launch the dashboard with a simple sidebar navigation."""
     st.set_page_config(page_title="UpGuard Prototype", layout="wide")
+    add_styles()
 
     page = st.sidebar.selectbox(
         "Navigation", ["Risk Overview", "Run Scanners"], index=0

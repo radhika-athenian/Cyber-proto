@@ -56,7 +56,7 @@ def _scan_one(item, timeout):
     return cert_info
 
 
-def scan_subdomains(subdomains, workers: int = 4, timeout: int = 5):
+def scan_subdomains(subdomains, workers: int = 50, timeout: int = 2):
     """Check SSL certificates for subdomains in parallel."""
     results = []
     with ThreadPoolExecutor(max_workers=workers) as executor:

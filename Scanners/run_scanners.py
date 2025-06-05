@@ -17,7 +17,7 @@ def save_json(domain, prefix, data):
     print(f"[✓] Saved {prefix} results to {filename}")
     return filename
 
-def run_all(domain, ports: str = "1-1000", workers: int = 4):
+def run_all(domain, ports: str = "1-100", workers: int = 100):
     print(f"[•] Running all scanners for: {domain}")
 
     # --- Subdomain scan
@@ -50,8 +50,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Run all scanners for a target domain.")
     parser.add_argument("--domain", required=True, help="Target root domain (e.g. example.com)")
-    parser.add_argument("--ports", default="1-1000", help="Port range for nmap")
-    parser.add_argument("--workers", type=int, default=4, help="Number of worker threads")
+    parser.add_argument("--ports", default="1-100", help="Port range (default: 1-100)")
+    parser.add_argument("--workers", type=int, default=100, help="Concurrent connections")
     args = parser.parse_args()
 
     run_all(args.domain, ports=args.ports, workers=args.workers)
