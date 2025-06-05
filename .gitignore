@@ -3,8 +3,3 @@ __pycache__/
 data/
 AI/models/*.pkl
 AI/models/*.json
-<<<<<<< HEAD
-=======
-ssl_check.log
-*.log
->>>>>>> origin/lpxcmz-codex/debug-scripts-and-create-streamlit-dashboard
