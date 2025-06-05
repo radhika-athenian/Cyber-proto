@@ -88,6 +88,3 @@ if __name__ == "__main__":
         subdomains = json.load(f)
 
     results = scan_subdomains(subdomains)
-    save_results(args.domain, results)
-
-

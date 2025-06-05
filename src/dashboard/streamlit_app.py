@@ -1,8 +1,4 @@
 """Streamlit dashboard for running scanners and visualizing risk scores."""
-import sys
-
-# Add absolute path to the project root so Python can find the src module
-sys.path.append(r"C:\Users\Radhika Gupta\Desktop\Cyber-proto")
 
 import json
 import os
@@ -11,12 +7,25 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from src.Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
-from src.Scanners.port_scanner import scan_ports
-from src.Scanners.ssl_checker import scan_subdomains as scan_ssl
-from src.Scanners.tech_scanner import detect_technologies
+from Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
+from Scanners.port_scanner import scan_ports
+from Scanners.ssl_checker import scan_subdomains as scan_ssl
+from Scanners.tech_scanner import detect_technologies
 
 DATA_DIR = "data"
+
+
+def add_styles():
+    """Basic CSS styling to mimic UpGuard look."""
+    st.markdown(
+        """
+        <style>
+        .main {background-color: #f5f8fa;}
+        .sidebar .sidebar-content {background-color: #ffffff;}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def load_risk_scores(file_obj=None):
@@ -77,6 +86,8 @@ def render_scanners():
 
     with st.form("scanner_form"):
         domain = st.text_input("Enter domain to scan (e.g., example.com):")
+        ports = st.text_input("Port range", "1-100")
+        workers = st.slider("Concurrent workers", 10, 200, 100)
         submit = st.form_submit_button("Run Scanners")
 
     if submit:
@@ -88,24 +99,25 @@ def render_scanners():
         subdomains = run_sublist3r(domain)
         resolved_subdomains = resolve_subdomains(subdomains)
         st.success(f"Found {len(resolved_subdomains)} resolved subdomains")
-        st.json(resolved_subdomains)
+        st.dataframe(pd.DataFrame(resolved_subdomains))
 
         st.info("Running Port Scanner...")
-        ports = scan_ports(resolved_subdomains)
+        port_results = scan_ports(resolved_subdomains, ports=ports, workers=workers)
         st.success("Port scanning complete")
-        st.json(ports)
+        st.dataframe(pd.DataFrame(port_results))
 
         st.info("Running SSL Checker...")
-        ssl_results = scan_ssl(resolved_subdomains)
+        ssl_results = scan_ssl(resolved_subdomains, workers=workers)
         st.success("SSL scan complete")
-        st.json(ssl_results)
+        st.dataframe(pd.DataFrame(ssl_results))
 
         st.info("Detecting Technologies...")
         tech_stack = detect_technologies(
-            [item["subdomain"] for item in resolved_subdomains]
+            [item["subdomain"] for item in resolved_subdomains],
+            workers=workers,
         )
         st.success("Technology fingerprinting complete")
-        st.json(tech_stack)
+        st.dataframe(pd.DataFrame(tech_stack))
 
         if st.checkbox("💾 Save all results to /data"):
             from datetime import datetime
@@ -116,7 +128,7 @@ def render_scanners():
             with open(f"{DATA_DIR}/{domain}_assets_{timestamp}.json", "w") as f:
                 json.dump(resolved_subdomains, f, indent=2)
             with open(f"{DATA_DIR}/{domain}_ports_{timestamp}.json", "w") as f:
-                json.dump(ports, f, indent=2)
+                json.dump(port_results, f, indent=2)
             with open(f"{DATA_DIR}/{domain}_ssl_results_{timestamp}.json", "w") as f:
                 json.dump(ssl_results, f, indent=2)
             with open(f"{DATA_DIR}/{domain}_tech_stack_{timestamp}.json", "w") as f:
@@ -128,6 +140,7 @@ def render_scanners():
 def main() -> None:
     """Launch the dashboard with a simple sidebar navigation."""
     st.set_page_config(page_title="UpGuard Prototype", layout="wide")
+    add_styles()
 
     page = st.sidebar.selectbox(
         "Navigation", ["Risk Overview", "Run Scanners"], index=0
