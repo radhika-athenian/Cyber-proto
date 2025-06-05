@@ -2,3 +2,10 @@
 2025-06-04 18:27:10,884 ERROR:Error retrieving SSL certificate for latest.atheniantech.com: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)
 2025-06-05 11:48:13,057 ERROR:Error retrieving SSL certificate for latest.atheniantech.com: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)
 2025-06-05 11:48:13,169 ERROR:Error retrieving SSL certificate for www.athena.atheniantech.com: [Errno 11001] getaddrinfo failed
+2025-06-05 12:02:05,215 ERROR:Error retrieving SSL certificate for www.ipu.ac.in: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-06-05 12:04:29,350 ERROR:Error retrieving SSL certificate for AS207960 Test Intermediate - example.com: [Errno 11001] getaddrinfo failed
+2025-06-05 12:04:36,450 ERROR:Error retrieving SSL certificate for support.example.com: [Errno 11001] getaddrinfo failed
+2025-06-05 12:04:37,212 ERROR:Error retrieving SSL certificate for m.testexample.com: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1028)
+2025-06-05 12:04:37,491 ERROR:Error retrieving SSL certificate for dev.example.com: [Errno 11001] getaddrinfo failed
+2025-06-05 12:04:37,493 ERROR:Error retrieving SSL certificate for products.example.com: [Errno 11001] getaddrinfo failed
+2025-06-05 12:04:37,755 ERROR:Error retrieving SSL certificate for m.example.com: [Errno 11001] getaddrinfo failed
