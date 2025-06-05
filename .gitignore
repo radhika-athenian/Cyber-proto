@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/
+AI/models/*.pkl
+AI/models/*.json

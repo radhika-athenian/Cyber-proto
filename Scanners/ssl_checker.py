@@ -7,15 +7,16 @@ from datetime import datetime
 from dateutil import parser as date_parser
 import pytz
 import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Set up logging
 logging.basicConfig(filename='ssl_check.log', level=logging.INFO,
                     format='%(asctime)s %(levelname)s:%(message)s')
 
-def get_ssl_certificate(domain):
+def get_ssl_certificate(domain, timeout: int = 5):
     try:
         context = ssl.create_default_context()
-        with socket.create_connection((domain, 443), timeout=5) as sock:
+        with socket.create_connection((domain, 443), timeout=timeout) as sock:
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 cert = ssock.getpeercert()
                 return cert
@@ -46,15 +47,22 @@ def parse_certificate_info(cert):
     except Exception as e:
         return {"error": f"Parsing error: {e}"}
 
-def scan_subdomains(subdomains):
+def _scan_one(item, timeout):
+    domain = item["subdomain"]
+    print(f"[+] Checking SSL for {domain}")
+    cert = get_ssl_certificate(domain, timeout=timeout)
+    cert_info = parse_certificate_info(cert)
+    cert_info["subdomain"] = domain
+    return cert_info
+
+
+def scan_subdomains(subdomains, workers: int = 4, timeout: int = 5):
+    """Check SSL certificates for subdomains in parallel."""
     results = []
-    for item in subdomains:
-        domain = item["subdomain"]
-        print(f"[+] Checking SSL for {domain}")
-        cert = get_ssl_certificate(domain)
-        cert_info = parse_certificate_info(cert)
-        cert_info["subdomain"] = domain
-        results.append(cert_info)
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = [executor.submit(_scan_one, item, timeout) for item in subdomains]
+        for future in as_completed(futures):
+            results.append(future.result())
     return results
 
 def save_results(domain, results):
