@@ -1,4 +1,8 @@
 """Streamlit dashboard for running scanners and visualizing risk scores."""
+import sys
+
+# Add absolute path to the project root so Python can find the src module
+sys.path.append(r"C:\Users\Radhika Gupta\Desktop\Cyber-proto")
 
 import json
 import os

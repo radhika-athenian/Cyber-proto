@@ -4,48 +4,42 @@ import nmap
 import json
 import os
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 OUTPUT_DIR = "data"
 
-def scan_ports(asset_list, ports="1-1000"):
-    """Scans open ports on a list of assets with Nmap."""
-    scanner = nmap.PortScanner()
+def _scan_host(asset, ports, timeout):
+    ip = asset.get("ip")
+    if not ip:
+        return {"subdomain": asset.get("subdomain"), "ip": ip, "ports": []}
+    try:
+        print(f"[+] Scanning ports on {ip} ({asset['subdomain']})...")
+        scanner = nmap.PortScanner()
+        scanner.scan(ip, ports, arguments=f"--max-retries 2 --host-timeout {timeout}s")
+        ports_found = []
+        for proto in scanner[ip].all_protocols():
+            lport = scanner[ip][proto].keys()
+            for port in sorted(lport):
+                state = scanner[ip][proto][port]['state']
+                ports_found.append({"port": port, "protocol": proto, "state": state})
+        return {"subdomain": asset["subdomain"], "ip": ip, "ports": ports_found}
+    except Exception as e:
+        print(f"[!] Error scanning {ip}: {e}")
+        return {
+            "subdomain": asset.get("subdomain"),
+            "ip": ip,
+            "ports": [],
+            "error": str(e),
+        }
+
+
+def scan_ports(asset_list, ports="1-1000", workers: int = 4, timeout: int = 60):
+    """Scan open ports on a list of assets in parallel."""
     results = []
-
-    for asset in asset_list:
-        ip = asset.get("ip")
-        if not ip:
-            continue
-        try:
-            print(f"[+] Scanning ports on {ip} ({asset['subdomain']})...")
-            scanner.scan(ip, ports)
-            ports_found = []
-
-            for proto in scanner[ip].all_protocols():
-                lport = scanner[ip][proto].keys()
-                for port in sorted(lport):
-                    state = scanner[ip][proto][port]["state"]
-                    ports_found.append({
-                        "port": port,
-                        "protocol": proto,
-                        "state": state
-                    })
-
-            results.append({
-                "subdomain": asset["subdomain"],
-                "ip": ip,
-                "ports": ports_found
-            })
-
-        except Exception as e:
-            print(f"[!] Error scanning {ip}: {e}")
-            results.append({
-                "subdomain": asset["subdomain"],
-                "ip": ip,
-                "ports": [],
-                "error": str(e)
-            })
-
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = [executor.submit(_scan_host, asset, ports, timeout) for asset in asset_list]
+        for future in as_completed(futures):
+            results.append(future.result())
     return results
 
 def save_results(domain, data):
