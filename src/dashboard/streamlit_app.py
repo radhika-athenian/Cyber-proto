@@ -7,10 +7,10 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
-from Scanners.port_scanner import scan_ports
-from Scanners.ssl_checker import scan_subdomains as scan_ssl
-from Scanners.tech_scanner import detect_technologies
+from src.Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
+from src.Scanners.port_scanner import scan_ports
+from src.Scanners.ssl_checker import scan_subdomains as scan_ssl
+from src.Scanners.tech_scanner import detect_technologies
 
 DATA_DIR = "data"
 
