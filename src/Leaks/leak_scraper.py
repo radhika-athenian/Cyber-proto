@@ -115,4 +115,3 @@ if __name__ == "__main__":
         save_to_json(leaks, OUTPUT_FILE)
     else:
         print(f"[!] No leaks found in {mode} mode for {target_domain}")
-

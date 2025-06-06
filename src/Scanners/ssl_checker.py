@@ -7,16 +7,15 @@ from datetime import datetime
 from dateutil import parser as date_parser
 import pytz
 import logging
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Set up logging
 logging.basicConfig(filename='ssl_check.log', level=logging.INFO,
                     format='%(asctime)s %(levelname)s:%(message)s')
 
-def get_ssl_certificate(domain, timeout: int = 5):
+def get_ssl_certificate(domain):
     try:
         context = ssl.create_default_context()
-        with socket.create_connection((domain, 443), timeout=timeout) as sock:
+        with socket.create_connection((domain, 443), timeout=5) as sock:
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 cert = ssock.getpeercert()
                 return cert
@@ -47,22 +46,15 @@ def parse_certificate_info(cert):
     except Exception as e:
         return {"error": f"Parsing error: {e}"}
 
-def _scan_one(item, timeout):
-    domain = item["subdomain"]
-    print(f"[+] Checking SSL for {domain}")
-    cert = get_ssl_certificate(domain, timeout=timeout)
-    cert_info = parse_certificate_info(cert)
-    cert_info["subdomain"] = domain
-    return cert_info
-
-
-def scan_subdomains(subdomains, workers: int = 50, timeout: int = 2):
-    """Check SSL certificates for subdomains in parallel."""
+def scan_subdomains(subdomains):
     results = []
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(_scan_one, item, timeout) for item in subdomains]
-        for future in as_completed(futures):
-            results.append(future.result())
+    for item in subdomains:
+        domain = item["subdomain"]
+        print(f"[+] Checking SSL for {domain}")
+        cert = get_ssl_certificate(domain)
+        cert_info = parse_certificate_info(cert)
+        cert_info["subdomain"] = domain
+        results.append(cert_info)
     return results
 
 def save_results(domain, results):
@@ -88,3 +80,4 @@ if __name__ == "__main__":
         subdomains = json.load(f)
 
     results = scan_subdomains(subdomains)
+    save_results(args.domain, results)

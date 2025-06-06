@@ -6,8 +6,8 @@ from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 import os
 
-DATA_FILE = 'ai/models/sample_risk_training_data.json'
-MODEL_PATH = 'ai/models/risk_model.pkl'
+DATA_FILE = 'ML/models/sample_risk_training_data.json'
+MODEL_PATH = 'ML/models/risk_model.pkl'
 
 def load_training_data(path):
     with open(path, 'r') as f:

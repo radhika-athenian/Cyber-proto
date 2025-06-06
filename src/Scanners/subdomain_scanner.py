@@ -5,12 +5,11 @@ import socket
 import json
 import os
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor
 
 OUTPUT_DIR = "data"
 DOMAIN = "example.com"  # Replace or pass as argument
 
-def run_sublist3r(domain, timeout: int = 60):
+def run_sublist3r(domain):
     """Runs Sublist3r to find subdomains."""
     print(f"[+] Scanning subdomains for: {domain}")
     try:
@@ -18,8 +17,7 @@ def run_sublist3r(domain, timeout: int = 60):
             ["sublist3r", "-d", domain, "-o", f"{OUTPUT_DIR}/{domain}_subdomains.txt"],
             check=True,
             capture_output=True,
-            text=True,
-            timeout=timeout,
+            text=True
         )
         print("[+] Sublist3r scan complete.")
     except subprocess.CalledProcessError as e:
@@ -31,21 +29,15 @@ def run_sublist3r(domain, timeout: int = 60):
     
     return subdomains
 
-def _resolve_one(subdomain: str, timeout: float = 5.0):
-    """Resolve a single subdomain to an IP address."""
-    try:
-        ip = socket.gethostbyname(subdomain)
-        return {"subdomain": subdomain, "ip": ip}
-    except socket.gaierror:
-        return {"subdomain": subdomain, "ip": None}
-
-
-def resolve_subdomains(subdomains, workers: int = 10):
-    """Resolve subdomains in parallel."""
+def resolve_subdomains(subdomains):
+    """Resolves subdomains to IP addresses."""
     resolved = []
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        for result in executor.map(_resolve_one, subdomains):
-            resolved.append(result)
+    for sub in subdomains:
+        try:
+            ip = socket.gethostbyname(sub)
+            resolved.append({"subdomain": sub, "ip": ip})
+        except socket.gaierror:
+            resolved.append({"subdomain": sub, "ip": None})
     return resolved
 
 def save_results(domain, data):

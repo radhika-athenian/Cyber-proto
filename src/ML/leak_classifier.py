@@ -6,8 +6,8 @@ input_path = 'data/leaks.json'
 output_path = 'data/classified_leaks.json'
 
 # Load model & vectorizer
-clf = joblib.load('ai/models/leak_model.pkl')
-vectorizer = joblib.load('ai/models/vectorizer.pkl')
+clf = joblib.load('ML/models/leak_model.pkl')
+vectorizer = joblib.load('ML/models/vectorizer.pkl')
 
 # Load scraped leaks
 with open(input_path, 'r', encoding='utf-8') as f:
