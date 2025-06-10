@@ -4,7 +4,6 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import subprocess
 import socket
-import os
 from datetime import datetime
 
 from src.utils import config, helpers

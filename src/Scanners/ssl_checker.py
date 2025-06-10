@@ -4,8 +4,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 
 import ssl
 import socket
-import json
-import os
 import argparse
 import logging
 from datetime import datetime

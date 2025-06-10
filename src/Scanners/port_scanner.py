@@ -1,15 +1,14 @@
 # scanners/port_scanner.py
+import os
 import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-
-
-import nmap
-import os
 from datetime import datetime
 
-from src.utils import config, helpers
-from src.utils.logger import get_logger
+import nmap
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from src.utils import config, helpers  # noqa: E402
+from src.utils.logger import get_logger  # noqa: E402
 
 logger = get_logger(__name__)
 OUTPUT_DIR = str(config.DATA_DIR)

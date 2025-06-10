@@ -3,13 +3,12 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 import argparse
-import os
 import re
 import requests
 from Wappalyzer import Wappalyzer, WebPage
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from src.utils import config, helpers
+from src.utils import helpers
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
