@@ -19,7 +19,7 @@ Launch the Streamlit app from the project root:
 
 
 ```bash
-streamlit run dashboard/app.py
+streamlit run src/dashboard/app.py
 ```
 
 The sidebar lets you kick off scans on your chosen domain.  Results are displayed in tables with a light theme similar to UpGuard.
