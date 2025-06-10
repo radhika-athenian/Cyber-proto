@@ -12,3 +12,4 @@ streamlit>=1.25
 Wappalyzer>=1.0
 pandas>=1.4
 pytest>=7.4
+aiohttp>=3.8

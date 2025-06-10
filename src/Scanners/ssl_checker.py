@@ -4,6 +4,7 @@ import json
 import os
 import argparse
 import logging
+import asyncio
 from datetime import datetime
 from dateutil import parser as date_parser
 import pytz
@@ -20,6 +21,19 @@ def get_ssl_certificate(domain):
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 cert = ssock.getpeercert()
                 return cert
+    except Exception as e:
+        logging.error(f"Error retrieving SSL certificate for {domain}: {e}")
+        return {"error": str(e)}
+
+async def get_ssl_certificate_async(domain):
+    """Asynchronous version of get_ssl_certificate using asyncio connections."""
+    try:
+        context = ssl.create_default_context()
+        reader, writer = await asyncio.open_connection(domain, 443, ssl=context)
+        cert = writer.get_extra_info("ssl_object").getpeercert()
+        writer.close()
+        await writer.wait_closed()
+        return cert
     except Exception as e:
         logging.error(f"Error retrieving SSL certificate for {domain}: {e}")
         return {"error": str(e)}
@@ -47,16 +61,28 @@ def parse_certificate_info(cert):
     except Exception as e:
         return {"error": f"Parsing error: {e}"}
 
-def scan_subdomains(subdomains):
-    results = []
-    for item in subdomains:
+def scan_subdomains(subdomains, workers: int = 100):
+    """Scan subdomains concurrently for SSL certificates."""
+
+    async def worker(item):
         domain = item["subdomain"]
         logger.info(f"Checking SSL for {domain}")
-        cert = get_ssl_certificate(domain)
+        cert = await get_ssl_certificate_async(domain)
         cert_info = parse_certificate_info(cert)
         cert_info["subdomain"] = domain
-        results.append(cert_info)
-    return results
+        return cert_info
+
+    async def run_all():
+        sem = asyncio.Semaphore(workers)
+
+        async def sem_worker(item):
+            async with sem:
+                return await worker(item)
+
+        tasks = [asyncio.create_task(sem_worker(item)) for item in subdomains]
+        return await asyncio.gather(*tasks)
+
+    return asyncio.run(run_all())
 
 def save_results(domain, results):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -69,6 +95,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SSL Certificate Checker")
     parser.add_argument("--domain", required=True, help="Target domain")
     parser.add_argument("--input", required=True, help="Path to resolved subdomains JSON")
+    parser.add_argument("--workers", type=int, default=100, help="Concurrent connections")
 
     args = parser.parse_args()
 
@@ -78,5 +105,5 @@ if __name__ == "__main__":
 
     subdomains = helpers.load_json(args.input, default=[])
 
-    results = scan_subdomains(subdomains)
+    results = scan_subdomains(subdomains, workers=args.workers)
     save_results(args.domain, results)
