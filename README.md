@@ -33,6 +33,7 @@ python run_all.py --domain example.com --ports 1-100 --workers 100
 ```
 
 Results will be saved under the `data/` directory with timestamped filenames.
+The folder will be created automatically when you run the scanners, so you don't need to add it manually.
 
 ### Risk Score Calculation
 
