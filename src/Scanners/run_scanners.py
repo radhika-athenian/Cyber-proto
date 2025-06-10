@@ -4,9 +4,9 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
 from src.Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
-from src.Scanners.port_scanner import scan_ports, save_results as save_ports
+from src.Scanners.port_scanner import scan_ports
 from src.Scanners.ssl_checker import scan_subdomains as scan_ssl
-from src.Scanners.tech_scanner import load_domains, detect_technologies, save_results as save_tech
+from src.Scanners.tech_scanner import detect_technologies
 
 
 def save_json(domain, prefix, data):
