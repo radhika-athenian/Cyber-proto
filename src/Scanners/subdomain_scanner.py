@@ -1,7 +1,4 @@
 # scanners/subdomain_scanner.py
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import subprocess
 import socket
 import os

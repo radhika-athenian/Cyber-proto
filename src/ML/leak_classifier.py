@@ -1,6 +1,3 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import joblib
 from pathlib import Path
 
@@ -9,25 +6,34 @@ from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-input_path = config.DATA_DIR / 'leaks.json'
-output_path = config.DATA_DIR / 'classified_leaks.json'
+DEFAULT_INPUT = config.DATA_DIR / "leaks.json"
+DEFAULT_OUTPUT = config.DATA_DIR / "classified_leaks.json"
 
-# Load model & vectorizer
-clf = joblib.load(config.MODELS_DIR / 'leak_model.pkl')
-vectorizer = joblib.load(config.MODELS_DIR / 'vectorizer.pkl')
 
-# Load scraped leaks
-leaks = helpers.load_json(input_path, default=[])
+def classify_leaks(input_path: Path = DEFAULT_INPUT, output_path: Path = DEFAULT_OUTPUT) -> None:
+    """Load leaks, apply the classifier and save labeled results."""
+    clf = joblib.load(config.MODELS_DIR / "leak_model.pkl")
+    vectorizer = joblib.load(config.MODELS_DIR / "vectorizer.pkl")
 
-# Predict and label
-classified = []
-for entry in leaks:
-    text = entry['content']
-    X = vectorizer.transform([text])
-    pred = clf.predict(X)[0]
-    entry['label'] = pred
-    classified.append(entry)
+    leaks = helpers.load_json(input_path, default=[])
+    classified = []
+    for entry in leaks:
+        text = entry["content"]
+        X = vectorizer.transform([text])
+        pred = clf.predict(X)[0]
+        entry["label"] = pred
+        classified.append(entry)
 
-# Save output
-helpers.save_json(classified, output_path)
-logger.info(f"Classified {len(classified)} leaks and saved to {output_path}")
+    helpers.save_json(classified, output_path)
+    logger.info(f"Classified {len(classified)} leaks and saved to {output_path}")
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Classify leaked data")
+    parser.add_argument("--input", default=str(DEFAULT_INPUT), help="Path to leak JSON")
+    parser.add_argument("--output", default=str(DEFAULT_OUTPUT), help="Path to save labeled JSON")
+    args = parser.parse_args()
+
+    classify_leaks(Path(args.input), Path(args.output))
