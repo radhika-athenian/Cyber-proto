@@ -1,0 +1,286 @@
+2025-06-09 17:53:13,518 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: atheniantech.com
+2025-06-09 17:54:25,491 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-09 17:54:36,620 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve www.atheniantech.com
+2025-06-09 17:54:36,622 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve athena.atheniantech.com
+2025-06-09 17:54:36,623 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve www.athena.atheniantech.com
+2025-06-09 17:54:36,624 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve latest.atheniantech.com
+2025-06-09 17:54:36,625 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve ti.atheniantech.com
+2025-06-09 17:54:36,633 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve ti-admin.atheniantech.com
+2025-06-09 17:54:36,959 [INFO] src.Scanners.tech_scanner: Scanning https://www.atheniantech.com
+2025-06-09 17:54:36,960 [INFO] src.Scanners.tech_scanner: Scanning https://athena.atheniantech.com
+2025-06-09 17:54:36,962 [INFO] src.Scanners.tech_scanner: Scanning https://www.athena.atheniantech.com
+2025-06-09 17:54:36,965 [INFO] src.Scanners.tech_scanner: Scanning https://latest.atheniantech.com
+2025-06-09 17:54:36,966 [ERROR] src.Scanners.tech_scanner: Failed to scan www.atheniantech.com: HTTPSConnectionPool(host='www.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000158398E2CF0>: Failed to resolve 'www.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 17:54:36,967 [INFO] src.Scanners.tech_scanner: Scanning https://ti.atheniantech.com
+2025-06-09 17:54:36,970 [ERROR] src.Scanners.tech_scanner: Failed to scan athena.atheniantech.com: HTTPSConnectionPool(host='athena.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001583997C910>: Failed to resolve 'athena.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 17:54:36,970 [INFO] src.Scanners.tech_scanner: Scanning https://ti-admin.atheniantech.com
+2025-06-09 17:54:36,974 [ERROR] src.Scanners.tech_scanner: Failed to scan www.athena.atheniantech.com: HTTPSConnectionPool(host='www.athena.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001583997D090>: Failed to resolve 'www.athena.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 17:54:36,976 [ERROR] src.Scanners.tech_scanner: Failed to scan latest.atheniantech.com: HTTPSConnectionPool(host='latest.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001583997D1D0>: Failed to resolve 'latest.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 17:54:36,980 [ERROR] src.Scanners.tech_scanner: Failed to scan ti-admin.atheniantech.com: HTTPSConnectionPool(host='ti-admin.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001583997D950>: Failed to resolve 'ti-admin.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 17:54:36,981 [ERROR] src.Scanners.tech_scanner: Failed to scan ti.atheniantech.com: HTTPSConnectionPool(host='ti.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001583997D810>: Failed to resolve 'ti.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 13:53:25,463 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: atheniantech.com
+2025-06-10 13:54:34,614 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 13:54:36,471 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve www.athena.atheniantech.com
+2025-06-10 13:54:38,274 [INFO] src.Scanners.tech_scanner: Scanning https://www.atheniantech.com
+2025-06-10 13:54:38,275 [INFO] src.Scanners.tech_scanner: Scanning https://athena.atheniantech.com
+2025-06-10 13:54:38,277 [INFO] src.Scanners.tech_scanner: Scanning https://www.athena.atheniantech.com
+2025-06-10 13:54:38,280 [INFO] src.Scanners.tech_scanner: Scanning https://latest.atheniantech.com
+2025-06-10 13:54:38,285 [INFO] src.Scanners.tech_scanner: Scanning https://ti.atheniantech.com
+2025-06-10 13:54:38,293 [INFO] src.Scanners.tech_scanner: Scanning https://ti-admin.atheniantech.com
+2025-06-10 13:54:38,313 [ERROR] src.Scanners.tech_scanner: Failed to scan www.athena.atheniantech.com: HTTPSConnectionPool(host='www.athena.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D635861950>: Failed to resolve 'www.athena.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 13:54:39,467 [ERROR] src.Scanners.tech_scanner: Failed to scan latest.atheniantech.com: HTTPSConnectionPool(host='latest.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)')))
+2025-06-10 14:10:52,622 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: atheniantech.com
+2025-06-10 14:12:04,412 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 14:12:05,288 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve www.athena.atheniantech.com
+2025-06-10 14:12:06,225 [INFO] src.Scanners.ssl_checker: Checking SSL for www.atheniantech.com
+2025-06-10 14:12:06,647 [INFO] src.Scanners.tech_scanner: Scanning https://www.atheniantech.com
+2025-06-10 14:12:06,648 [INFO] src.Scanners.tech_scanner: Scanning https://athena.atheniantech.com
+2025-06-10 14:12:06,652 [INFO] src.Scanners.tech_scanner: Scanning https://www.athena.atheniantech.com
+2025-06-10 14:12:06,655 [INFO] src.Scanners.tech_scanner: Scanning https://latest.atheniantech.com
+2025-06-10 14:12:06,658 [INFO] src.Scanners.tech_scanner: Scanning https://ti.atheniantech.com
+2025-06-10 14:12:06,679 [INFO] src.Scanners.tech_scanner: Scanning https://ti-admin.atheniantech.com
+2025-06-10 14:12:06,697 [ERROR] src.Scanners.tech_scanner: Failed to scan www.athena.atheniantech.com: HTTPSConnectionPool(host='www.athena.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000018536B21A90>: Failed to resolve 'www.athena.atheniantech.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 14:12:07,382 [INFO] src.Scanners.port_scanner: Scanning ports on 198.12.234.39 (www.atheniantech.com)
+2025-06-10 14:12:07,594 [INFO] src.Scanners.ssl_checker: Checking SSL for athena.atheniantech.com
+2025-06-10 14:12:07,626 [ERROR] src.Scanners.tech_scanner: Failed to scan latest.atheniantech.com: HTTPSConnectionPool(host='latest.atheniantech.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)')))
+2025-06-10 14:12:07,882 [INFO] src.Scanners.ssl_checker: Checking SSL for www.athena.atheniantech.com
+2025-06-10 14:12:07,922 [ERROR] root: Error retrieving SSL certificate for www.athena.atheniantech.com: [Errno 11001] getaddrinfo failed
+2025-06-10 14:12:07,924 [INFO] src.Scanners.ssl_checker: Checking SSL for latest.atheniantech.com
+2025-06-10 14:12:08,603 [ERROR] root: Error retrieving SSL certificate for latest.atheniantech.com: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1028)
+2025-06-10 14:12:08,604 [INFO] src.Scanners.ssl_checker: Checking SSL for ti.atheniantech.com
+2025-06-10 14:12:08,762 [INFO] src.Scanners.ssl_checker: Checking SSL for ti-admin.atheniantech.com
+2025-06-10 14:15:42,428 [INFO] src.Scanners.port_scanner: Scanning ports on 98.70.9.164 (athena.atheniantech.com)
+2025-06-10 14:15:55,424 [INFO] src.Scanners.port_scanner: Scanning ports on 185.28.21.160 (latest.atheniantech.com)
+2025-06-10 14:17:31,556 [INFO] src.Scanners.port_scanner: Scanning ports on 3.7.162.232 (ti.atheniantech.com)
+2025-06-10 14:19:26,081 [INFO] src.Scanners.port_scanner: Scanning ports on 3.7.162.232 (ti-admin.atheniantech.com)
+2025-06-10 14:21:23,335 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: niti.gov.in
+2025-06-10 14:22:35,412 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 14:22:35,643 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve cic.niti.gov.in
+2025-06-10 14:22:37,990 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve iemf.niti.gov.in
+2025-06-10 14:22:38,241 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve industry.niti.gov.in
+2025-06-10 14:22:41,949 [INFO] src.Scanners.ssl_checker: Checking SSL for www.niti.gov.in
+2025-06-10 14:22:42,063 [INFO] src.Scanners.port_scanner: Scanning ports on 23.223.243.26 (www.niti.gov.in)
+2025-06-10 14:22:42,314 [INFO] src.Scanners.tech_scanner: Scanning https://www.niti.gov.in
+2025-06-10 14:22:42,316 [INFO] src.Scanners.tech_scanner: Scanning https://agri.niti.gov.in
+2025-06-10 14:22:42,321 [INFO] src.Scanners.tech_scanner: Scanning https://cic.niti.gov.in
+2025-06-10 14:22:42,323 [INFO] src.Scanners.tech_scanner: Scanning https://covaid.niti.gov.in
+2025-06-10 14:22:42,325 [INFO] src.Scanners.tech_scanner: Scanning https://cwmi.niti.gov.in
+2025-06-10 14:22:42,330 [INFO] src.Scanners.tech_scanner: Scanning https://www.cwmi.niti.gov.in
+2025-06-10 14:22:42,334 [INFO] src.Scanners.tech_scanner: Scanning https://dyce.niti.gov.in
+2025-06-10 14:22:42,337 [INFO] src.Scanners.tech_scanner: Scanning https://www.dyce.niti.gov.in
+2025-06-10 14:22:42,344 [INFO] src.Scanners.tech_scanner: Scanning https://e-amrit.niti.gov.in
+2025-06-10 14:22:42,346 [ERROR] src.Scanners.tech_scanner: Failed to scan cic.niti.gov.in: HTTPSConnectionPool(host='cic.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185510BFC50>: Failed to resolve 'cic.niti.gov.in' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 14:22:42,349 [INFO] src.Scanners.tech_scanner: Scanning https://www.e-amrit.niti.gov.in
+2025-06-10 14:22:42,352 [INFO] src.Scanners.tech_scanner: Scanning https://iced.niti.gov.in
+2025-06-10 14:22:42,357 [INFO] src.Scanners.tech_scanner: Scanning https://iemf.niti.gov.in
+2025-06-10 14:22:42,358 [INFO] src.Scanners.tech_scanner: Scanning https://industry.niti.gov.in
+2025-06-10 14:22:42,366 [INFO] src.Scanners.tech_scanner: Scanning https://library.niti.gov.in
+2025-06-10 14:22:42,374 [INFO] src.Scanners.tech_scanner: Scanning https://ndap.niti.gov.in
+2025-06-10 14:22:42,377 [INFO] src.Scanners.tech_scanner: Scanning https://ndap-beta.niti.gov.in
+2025-06-10 14:22:42,380 [ERROR] src.Scanners.tech_scanner: Failed to scan covaid.niti.gov.in: HTTPSConnectionPool(host='covaid.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)')))
+2025-06-10 14:22:42,382 [INFO] src.Scanners.tech_scanner: Scanning https://nrdmd.niti.gov.in
+2025-06-10 14:22:42,385 [INFO] src.Scanners.tech_scanner: Scanning https://www.nrdmd.niti.gov.in
+2025-06-10 14:22:42,392 [INFO] src.Scanners.tech_scanner: Scanning https://outcomedashboard.niti.gov.in
+2025-06-10 14:22:42,394 [ERROR] src.Scanners.tech_scanner: Failed to scan iemf.niti.gov.in: HTTPSConnectionPool(host='iemf.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185511782D0>: Failed to resolve 'iemf.niti.gov.in' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 14:22:42,397 [ERROR] src.Scanners.tech_scanner: Failed to scan industry.niti.gov.in: HTTPSConnectionPool(host='industry.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185511787D0>: Failed to resolve 'industry.niti.gov.in' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 14:22:42,398 [INFO] src.Scanners.tech_scanner: Scanning https://pmspeechtracker.niti.gov.in
+2025-06-10 14:22:42,403 [INFO] src.Scanners.tech_scanner: Scanning https://poshangyan.niti.gov.in
+2025-06-10 14:22:42,405 [INFO] src.Scanners.tech_scanner: Scanning https://www.poshangyan.niti.gov.in
+2025-06-10 14:22:42,412 [INFO] src.Scanners.tech_scanner: Scanning https://www.poshangyan-api.niti.gov.in
+2025-06-10 14:22:42,421 [INFO] src.Scanners.tech_scanner: Scanning https://poshangyan-api.niti.gov.in
+2025-06-10 14:22:42,424 [INFO] src.Scanners.tech_scanner: Scanning https://sdgindiaindex.niti.gov.in
+2025-06-10 14:22:42,425 [INFO] src.Scanners.tech_scanner: Scanning https://workforindia.niti.gov.in
+2025-06-10 14:22:42,444 [ERROR] src.Scanners.tech_scanner: Failed to scan iced.niti.gov.in: HTTPSConnectionPool(host='iced.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-06-10 14:22:42,452 [ERROR] src.Scanners.tech_scanner: Failed to scan ndap-beta.niti.gov.in: HTTPSConnectionPool(host='ndap-beta.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)')))
+2025-06-10 14:22:42,550 [ERROR] src.Scanners.tech_scanner: Failed to scan www.dyce.niti.gov.in: HTTPSConnectionPool(host='www.dyce.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dyce.niti.gov.in'. (_ssl.c:1028)")))
+2025-06-10 14:22:42,554 [ERROR] src.Scanners.tech_scanner: Failed to scan workforindia.niti.gov.in: HTTPSConnectionPool(host='workforindia.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-06-10 14:22:42,563 [INFO] src.Scanners.ssl_checker: Checking SSL for agri.niti.gov.in
+2025-06-10 14:22:42,564 [ERROR] src.Scanners.tech_scanner: Failed to scan e-amrit.niti.gov.in: HTTPSConnectionPool(host='e-amrit.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-06-10 14:22:42,734 [ERROR] src.Scanners.tech_scanner: Failed to scan dyce.niti.gov.in: HTTPSConnectionPool(host='dyce.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)')))
+2025-06-10 14:22:42,741 [ERROR] src.Scanners.tech_scanner: Failed to scan www.e-amrit.niti.gov.in: HTTPSConnectionPool(host='www.e-amrit.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-06-10 14:22:43,359 [ERROR] src.Scanners.tech_scanner: Failed to scan library.niti.gov.in: HTTPSConnectionPool(host='library.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-06-10 14:22:45,348 [ERROR] src.Scanners.tech_scanner: Failed to scan agri.niti.gov.in: HTTPSConnectionPool(host='agri.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000185510BFB10>, 'Connection to agri.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,364 [ERROR] src.Scanners.tech_scanner: Failed to scan cwmi.niti.gov.in: HTTPSConnectionPool(host='cwmi.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000185510BFED0>, 'Connection to cwmi.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,379 [ERROR] src.Scanners.tech_scanner: Failed to scan www.cwmi.niti.gov.in: HTTPSConnectionPool(host='www.cwmi.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551178050>, 'Connection to www.cwmi.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,425 [ERROR] src.Scanners.tech_scanner: Failed to scan nrdmd.niti.gov.in: HTTPSConnectionPool(host='nrdmd.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179090>, 'Connection to nrdmd.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,440 [ERROR] src.Scanners.tech_scanner: Failed to scan www.nrdmd.niti.gov.in: HTTPSConnectionPool(host='www.nrdmd.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179590>, 'Connection to www.nrdmd.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,455 [ERROR] src.Scanners.tech_scanner: Failed to scan pmspeechtracker.niti.gov.in: HTTPSConnectionPool(host='pmspeechtracker.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179310>, 'Connection to pmspeechtracker.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,470 [ERROR] src.Scanners.tech_scanner: Failed to scan www.poshangyan-api.niti.gov.in: HTTPSConnectionPool(host='www.poshangyan-api.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179A90>, 'Connection to www.poshangyan-api.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,471 [ERROR] src.Scanners.tech_scanner: Failed to scan poshangyan.niti.gov.in: HTTPSConnectionPool(host='poshangyan.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179810>, 'Connection to poshangyan.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,472 [ERROR] src.Scanners.tech_scanner: Failed to scan poshangyan-api.niti.gov.in: HTTPSConnectionPool(host='poshangyan-api.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000185511791D0>, 'Connection to poshangyan-api.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,473 [ERROR] src.Scanners.tech_scanner: Failed to scan www.poshangyan.niti.gov.in: HTTPSConnectionPool(host='www.poshangyan.niti.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000018551179950>, 'Connection to www.poshangyan.niti.gov.in timed out. (connect timeout=3)'))
+2025-06-10 14:22:45,563 [ERROR] src.Scanners.tech_scanner: Failed to scan outcomedashboard.niti.gov.in: HTTPSConnectionPool(host='outcomedashboard.niti.gov.in', port=443): Read timed out. (read timeout=3)
+2025-06-10 14:22:47,620 [ERROR] root: Error retrieving SSL certificate for agri.niti.gov.in: timed out
+2025-06-10 14:22:47,621 [INFO] src.Scanners.ssl_checker: Checking SSL for cic.niti.gov.in
+2025-06-10 14:22:47,673 [ERROR] root: Error retrieving SSL certificate for cic.niti.gov.in: [Errno 11001] getaddrinfo failed
+2025-06-10 14:22:47,676 [INFO] src.Scanners.ssl_checker: Checking SSL for covaid.niti.gov.in
+2025-06-10 14:22:47,756 [ERROR] root: Error retrieving SSL certificate for covaid.niti.gov.in: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)
+2025-06-10 14:22:47,757 [INFO] src.Scanners.ssl_checker: Checking SSL for cwmi.niti.gov.in
+2025-06-10 14:22:52,803 [ERROR] root: Error retrieving SSL certificate for cwmi.niti.gov.in: timed out
+2025-06-10 14:22:52,804 [INFO] src.Scanners.ssl_checker: Checking SSL for www.cwmi.niti.gov.in
+2025-06-10 14:22:53,997 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.170 (agri.niti.gov.in)
+2025-06-10 14:22:57,869 [ERROR] root: Error retrieving SSL certificate for www.cwmi.niti.gov.in: timed out
+2025-06-10 14:22:57,871 [INFO] src.Scanners.ssl_checker: Checking SSL for dyce.niti.gov.in
+2025-06-10 14:22:58,132 [ERROR] root: Error retrieving SSL certificate for dyce.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)
+2025-06-10 14:22:58,133 [INFO] src.Scanners.ssl_checker: Checking SSL for www.dyce.niti.gov.in
+2025-06-10 14:22:58,332 [ERROR] root: Error retrieving SSL certificate for www.dyce.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dyce.niti.gov.in'. (_ssl.c:1028)
+2025-06-10 14:22:58,334 [INFO] src.Scanners.ssl_checker: Checking SSL for e-amrit.niti.gov.in
+2025-06-10 14:22:58,672 [ERROR] root: Error retrieving SSL certificate for e-amrit.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+2025-06-10 14:22:58,674 [INFO] src.Scanners.ssl_checker: Checking SSL for www.e-amrit.niti.gov.in
+2025-06-10 14:22:59,004 [ERROR] root: Error retrieving SSL certificate for www.e-amrit.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+2025-06-10 14:22:59,008 [INFO] src.Scanners.ssl_checker: Checking SSL for iced.niti.gov.in
+2025-06-10 14:22:59,110 [ERROR] root: Error retrieving SSL certificate for iced.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+2025-06-10 14:22:59,112 [INFO] src.Scanners.ssl_checker: Checking SSL for iemf.niti.gov.in
+2025-06-10 14:22:59,217 [ERROR] root: Error retrieving SSL certificate for iemf.niti.gov.in: [Errno 11001] getaddrinfo failed
+2025-06-10 14:22:59,219 [INFO] src.Scanners.ssl_checker: Checking SSL for industry.niti.gov.in
+2025-06-10 14:22:59,353 [ERROR] root: Error retrieving SSL certificate for industry.niti.gov.in: [Errno 11001] getaddrinfo failed
+2025-06-10 14:22:59,355 [INFO] src.Scanners.ssl_checker: Checking SSL for library.niti.gov.in
+2025-06-10 14:22:59,664 [ERROR] root: Error retrieving SSL certificate for library.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+2025-06-10 14:22:59,665 [INFO] src.Scanners.ssl_checker: Checking SSL for ndap.niti.gov.in
+2025-06-10 14:22:59,733 [INFO] src.Scanners.ssl_checker: Checking SSL for ndap-beta.niti.gov.in
+2025-06-10 14:23:00,418 [ERROR] root: Error retrieving SSL certificate for ndap-beta.niti.gov.in: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)
+2025-06-10 14:23:00,422 [INFO] src.Scanners.ssl_checker: Checking SSL for nrdmd.niti.gov.in
+2025-06-10 14:23:02,757 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.114.170: '164.100.114.170'
+2025-06-10 14:23:02,758 [INFO] src.Scanners.port_scanner: Scanning ports on 172.66.0.145 (covaid.niti.gov.in)
+2025-06-10 14:23:05,471 [ERROR] root: Error retrieving SSL certificate for nrdmd.niti.gov.in: timed out
+2025-06-10 14:23:05,473 [INFO] src.Scanners.ssl_checker: Checking SSL for www.nrdmd.niti.gov.in
+2025-06-10 14:23:10,529 [ERROR] root: Error retrieving SSL certificate for www.nrdmd.niti.gov.in: timed out
+2025-06-10 14:23:10,530 [INFO] src.Scanners.ssl_checker: Checking SSL for outcomedashboard.niti.gov.in
+2025-06-10 14:23:10,988 [INFO] src.Scanners.ssl_checker: Checking SSL for pmspeechtracker.niti.gov.in
+2025-06-10 14:23:16,048 [ERROR] root: Error retrieving SSL certificate for pmspeechtracker.niti.gov.in: timed out
+2025-06-10 14:23:16,049 [INFO] src.Scanners.ssl_checker: Checking SSL for poshangyan.niti.gov.in
+2025-06-10 14:23:21,109 [ERROR] root: Error retrieving SSL certificate for poshangyan.niti.gov.in: timed out
+2025-06-10 14:23:21,111 [INFO] src.Scanners.ssl_checker: Checking SSL for www.poshangyan.niti.gov.in
+2025-06-10 14:23:26,153 [ERROR] root: Error retrieving SSL certificate for www.poshangyan.niti.gov.in: timed out
+2025-06-10 14:23:26,156 [INFO] src.Scanners.ssl_checker: Checking SSL for poshangyan-api.niti.gov.in
+2025-06-10 14:23:31,221 [ERROR] root: Error retrieving SSL certificate for poshangyan-api.niti.gov.in: timed out
+2025-06-10 14:23:31,223 [INFO] src.Scanners.ssl_checker: Checking SSL for www.poshangyan-api.niti.gov.in
+2025-06-10 14:23:36,270 [ERROR] root: Error retrieving SSL certificate for www.poshangyan-api.niti.gov.in: timed out
+2025-06-10 14:23:36,272 [INFO] src.Scanners.ssl_checker: Checking SSL for sdgindiaindex.niti.gov.in
+2025-06-10 14:23:36,996 [INFO] src.Scanners.ssl_checker: Checking SSL for workforindia.niti.gov.in
+2025-06-10 14:23:40,561 [ERROR] root: Error retrieving SSL certificate for workforindia.niti.gov.in: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+2025-06-10 14:24:36,152 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.84 (cwmi.niti.gov.in)
+2025-06-10 14:24:44,924 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.114.84: '164.100.114.84'
+2025-06-10 14:24:44,925 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.84 (www.cwmi.niti.gov.in)
+2025-06-10 14:24:53,645 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.114.84: '164.100.114.84'
+2025-06-10 14:24:53,646 [INFO] src.Scanners.port_scanner: Scanning ports on 13.232.163.77 (dyce.niti.gov.in)
+2025-06-10 14:26:13,654 [INFO] src.Scanners.port_scanner: Scanning ports on 13.232.163.77 (www.dyce.niti.gov.in)
+2025-06-10 14:26:42,249 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.149 (e-amrit.niti.gov.in)
+2025-06-10 14:27:54,858 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.149 (www.e-amrit.niti.gov.in)
+2025-06-10 14:28:37,268 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.198.75 (iced.niti.gov.in)
+2025-06-10 14:28:54,192 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.114.190 (library.niti.gov.in)
+2025-06-10 14:29:35,074 [INFO] src.Scanners.port_scanner: Scanning ports on 13.224.163.97 (ndap.niti.gov.in)
+2025-06-10 14:29:45,959 [INFO] src.Scanners.port_scanner: Scanning ports on 18.66.78.40 (ndap-beta.niti.gov.in)
+2025-06-10 14:29:56,777 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.85.132 (nrdmd.niti.gov.in)
+2025-06-10 14:30:05,530 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.85.132: '164.100.85.132'
+2025-06-10 14:30:05,530 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.85.132 (www.nrdmd.niti.gov.in)
+2025-06-10 14:30:14,872 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.85.132: '164.100.85.132'
+2025-06-10 14:30:14,873 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.228.64 (outcomedashboard.niti.gov.in)
+2025-06-10 14:30:50,961 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.54.10 (pmspeechtracker.niti.gov.in)
+2025-06-10 14:30:59,809 [ERROR] src.Scanners.port_scanner: Error scanning 164.100.54.10: '164.100.54.10'
+2025-06-10 14:30:59,810 [INFO] src.Scanners.port_scanner: Scanning ports on 3.111.163.83 (poshangyan.niti.gov.in)
+2025-06-10 14:31:08,597 [ERROR] src.Scanners.port_scanner: Error scanning 3.111.163.83: '3.111.163.83'
+2025-06-10 14:31:08,598 [INFO] src.Scanners.port_scanner: Scanning ports on 3.111.163.83 (www.poshangyan.niti.gov.in)
+2025-06-10 14:31:17,377 [ERROR] src.Scanners.port_scanner: Error scanning 3.111.163.83: '3.111.163.83'
+2025-06-10 14:31:17,378 [INFO] src.Scanners.port_scanner: Scanning ports on 15.207.28.179 (poshangyan-api.niti.gov.in)
+2025-06-10 14:31:27,497 [ERROR] src.Scanners.port_scanner: Error scanning 15.207.28.179: '15.207.28.179'
+2025-06-10 14:31:27,498 [INFO] src.Scanners.port_scanner: Scanning ports on 15.207.28.179 (www.poshangyan-api.niti.gov.in)
+2025-06-10 14:31:37,330 [ERROR] src.Scanners.port_scanner: Error scanning 15.207.28.179: '15.207.28.179'
+2025-06-10 14:31:37,331 [INFO] src.Scanners.port_scanner: Scanning ports on 3.6.61.36 (sdgindiaindex.niti.gov.in)
+2025-06-10 14:32:05,222 [INFO] src.Scanners.port_scanner: Scanning ports on 164.100.213.197 (workforindia.niti.gov.in)
+2025-06-10 15:13:19,742 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: https://google-gruyere.appspot.com/
+2025-06-10 15:13:21,737 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 15:13:49,553 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: google-gruyere.appspot.com
+2025-06-10 15:15:01,653 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 15:17:32,992 [INFO] src.Scanners.subdomain_scanner: Scanning subdomains for: hackthissite.org
+2025-06-10 15:18:43,788 [INFO] src.Scanners.subdomain_scanner: Sublist3r scan complete.
+2025-06-10 15:18:47,211 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve irc-ipv6.hackthissite.org
+2025-06-10 15:18:47,539 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve irc-v6.hackthissite.org
+2025-06-10 15:18:47,867 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve lille.irc-v6.hackthissite.org
+2025-06-10 15:18:48,197 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve wolf.irc-v6.hackthissite.org
+2025-06-10 15:18:49,106 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve mail.hackthissite.org
+2025-06-10 15:18:49,624 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve mta-sts.hackthissite.org
+2025-06-10 15:18:49,947 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve new-irc.hackthissite.org
+2025-06-10 15:18:50,608 [WARNING] src.Scanners.subdomain_scanner: Unable to resolve status-new.hackthissite.org
+2025-06-10 15:18:50,616 [INFO] src.Scanners.ssl_checker: Checking SSL for www.hackthissite.org
+2025-06-10 15:18:50,824 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.104 (www.hackthissite.org)
+2025-06-10 15:18:50,968 [INFO] src.Scanners.tech_scanner: Scanning https://www.hackthissite.org
+2025-06-10 15:18:50,969 [INFO] src.Scanners.tech_scanner: Scanning https://ctf.hackthissite.org
+2025-06-10 15:18:50,971 [INFO] src.Scanners.tech_scanner: Scanning https://forum.hackthissite.org
+2025-06-10 15:18:50,975 [INFO] src.Scanners.tech_scanner: Scanning https://h5ai.hackthissite.org
+2025-06-10 15:18:50,979 [INFO] src.Scanners.tech_scanner: Scanning https://irc.hackthissite.org
+2025-06-10 15:18:50,982 [INFO] src.Scanners.tech_scanner: Scanning https://www.irc.hackthissite.org
+2025-06-10 15:18:50,988 [INFO] src.Scanners.tech_scanner: Scanning https://lille.irc.hackthissite.org
+2025-06-10 15:18:50,995 [INFO] src.Scanners.tech_scanner: Scanning https://wolf.irc.hackthissite.org
+2025-06-10 15:18:50,999 [INFO] src.Scanners.tech_scanner: Scanning https://irc-ipv6.hackthissite.org
+2025-06-10 15:18:51,001 [INFO] src.Scanners.tech_scanner: Scanning https://irc-v6.hackthissite.org
+2025-06-10 15:18:51,006 [INFO] src.Scanners.tech_scanner: Scanning https://lille.irc-v6.hackthissite.org
+2025-06-10 15:18:51,009 [INFO] src.Scanners.tech_scanner: Scanning https://wolf.irc-v6.hackthissite.org
+2025-06-10 15:18:51,015 [INFO] src.Scanners.tech_scanner: Scanning https://irc-wolf.hackthissite.org
+2025-06-10 15:18:51,019 [INFO] src.Scanners.tech_scanner: Scanning https://legal.hackthissite.org
+2025-06-10 15:18:51,023 [INFO] src.Scanners.tech_scanner: Scanning https://mail.hackthissite.org
+2025-06-10 15:18:51,026 [INFO] src.Scanners.tech_scanner: Scanning https://mirror.hackthissite.org
+2025-06-10 15:18:51,027 [INFO] src.Scanners.tech_scanner: Scanning https://mta-sts.hackthissite.org
+2025-06-10 15:18:51,035 [INFO] src.Scanners.tech_scanner: Scanning https://new-irc.hackthissite.org
+2025-06-10 15:18:51,038 [INFO] src.Scanners.tech_scanner: Scanning https://status.hackthissite.org
+2025-06-10 15:18:51,042 [INFO] src.Scanners.tech_scanner: Scanning https://status-new.hackthissite.org
+2025-06-10 15:18:51,054 [ERROR] src.Scanners.tech_scanner: Failed to scan irc-ipv6.hackthissite.org: HTTPSConnectionPool(host='irc-ipv6.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0410>: Failed to resolve 'irc-ipv6.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,057 [ERROR] src.Scanners.tech_scanner: Failed to scan irc-v6.hackthissite.org: HTTPSConnectionPool(host='irc-v6.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0550>: Failed to resolve 'irc-v6.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,099 [ERROR] src.Scanners.tech_scanner: Failed to scan wolf.irc-v6.hackthissite.org: HTTPSConnectionPool(host='wolf.irc-v6.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C07D0>: Failed to resolve 'wolf.irc-v6.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,100 [ERROR] src.Scanners.tech_scanner: Failed to scan lille.irc-v6.hackthissite.org: HTTPSConnectionPool(host='lille.irc-v6.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0690>: Failed to resolve 'lille.irc-v6.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,101 [ERROR] src.Scanners.tech_scanner: Failed to scan new-irc.hackthissite.org: HTTPSConnectionPool(host='new-irc.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0F50>: Failed to resolve 'new-irc.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,103 [ERROR] src.Scanners.tech_scanner: Failed to scan status-new.hackthissite.org: HTTPSConnectionPool(host='status-new.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C1310>: Failed to resolve 'status-new.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,105 [ERROR] src.Scanners.tech_scanner: Failed to scan mail.hackthissite.org: HTTPSConnectionPool(host='mail.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0B90>: Failed to resolve 'mail.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,106 [ERROR] src.Scanners.tech_scanner: Failed to scan mta-sts.hackthissite.org: HTTPSConnectionPool(host='mta-sts.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000185513C0E10>: Failed to resolve 'mta-sts.hackthissite.org' ([Errno 11001] getaddrinfo failed)"))
+2025-06-10 15:18:51,555 [ERROR] src.Scanners.tech_scanner: Failed to scan forum.hackthissite.org: HTTPSConnectionPool(host='forum.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'forum.hackthissite.org'. (_ssl.c:1028)")))
+2025-06-10 15:18:51,559 [INFO] src.Scanners.ssl_checker: Checking SSL for ctf.hackthissite.org
+2025-06-10 15:18:51,566 [ERROR] src.Scanners.tech_scanner: Failed to scan legal.hackthissite.org: HTTPSConnectionPool(host='legal.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)')))
+2025-06-10 15:18:51,722 [INFO] src.Scanners.ssl_checker: Checking SSL for forum.hackthissite.org
+2025-06-10 15:18:52,166 [ERROR] src.Scanners.tech_scanner: Failed to scan irc-wolf.hackthissite.org: HTTPSConnectionPool(host='irc-wolf.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'irc-wolf.hackthissite.org'. (_ssl.c:1028)")))
+2025-06-10 15:18:52,245 [ERROR] root: Error retrieving SSL certificate for forum.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'forum.hackthissite.org'. (_ssl.c:1028)
+2025-06-10 15:18:52,247 [INFO] src.Scanners.ssl_checker: Checking SSL for h5ai.hackthissite.org
+2025-06-10 15:18:52,321 [ERROR] src.Scanners.tech_scanner: Failed to scan wolf.irc.hackthissite.org: HTTPSConnectionPool(host='www.irc.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)')))
+2025-06-10 15:18:52,323 [ERROR] src.Scanners.tech_scanner: Failed to scan irc.hackthissite.org: HTTPSConnectionPool(host='www.irc.hackthissite.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)')))
+2025-06-10 15:18:52,381 [INFO] src.Scanners.ssl_checker: Checking SSL for irc.hackthissite.org
+2025-06-10 15:18:52,961 [INFO] src.Scanners.ssl_checker: Checking SSL for www.irc.hackthissite.org
+2025-06-10 15:18:53,365 [ERROR] root: Error retrieving SSL certificate for www.irc.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)
+2025-06-10 15:18:53,367 [INFO] src.Scanners.ssl_checker: Checking SSL for lille.irc.hackthissite.org
+2025-06-10 15:18:53,781 [ERROR] root: Error retrieving SSL certificate for lille.irc.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)
+2025-06-10 15:18:53,783 [INFO] src.Scanners.ssl_checker: Checking SSL for wolf.irc.hackthissite.org
+2025-06-10 15:18:54,241 [ERROR] src.Scanners.tech_scanner: Failed to scan lille.irc.hackthissite.org: HTTPSConnectionPool(host='lille.irc.hackthissite.org', port=443): Read timed out. (read timeout=3)
+2025-06-10 15:18:54,242 [ERROR] src.Scanners.tech_scanner: Failed to scan www.irc.hackthissite.org: HTTPSConnectionPool(host='www.irc.hackthissite.org', port=443): Read timed out. (read timeout=3)
+2025-06-10 15:18:54,271 [ERROR] src.Scanners.tech_scanner: Failed to scan mirror.hackthissite.org: HTTPSConnectionPool(host='mirror.hackthissite.org', port=443): Read timed out. (read timeout=3)
+2025-06-10 15:18:54,310 [INFO] src.Scanners.ssl_checker: Checking SSL for irc-ipv6.hackthissite.org
+2025-06-10 15:18:54,349 [ERROR] root: Error retrieving SSL certificate for irc-ipv6.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:54,351 [INFO] src.Scanners.ssl_checker: Checking SSL for irc-v6.hackthissite.org
+2025-06-10 15:18:54,388 [ERROR] root: Error retrieving SSL certificate for irc-v6.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:54,389 [INFO] src.Scanners.ssl_checker: Checking SSL for lille.irc-v6.hackthissite.org
+2025-06-10 15:18:54,430 [ERROR] root: Error retrieving SSL certificate for lille.irc-v6.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:54,432 [INFO] src.Scanners.ssl_checker: Checking SSL for wolf.irc-v6.hackthissite.org
+2025-06-10 15:18:54,475 [ERROR] root: Error retrieving SSL certificate for wolf.irc-v6.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:54,477 [INFO] src.Scanners.ssl_checker: Checking SSL for irc-wolf.hackthissite.org
+2025-06-10 15:18:54,848 [ERROR] root: Error retrieving SSL certificate for irc-wolf.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'irc-wolf.hackthissite.org'. (_ssl.c:1028)
+2025-06-10 15:18:54,849 [INFO] src.Scanners.ssl_checker: Checking SSL for legal.hackthissite.org
+2025-06-10 15:18:55,265 [ERROR] root: Error retrieving SSL certificate for legal.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)
+2025-06-10 15:18:55,267 [INFO] src.Scanners.ssl_checker: Checking SSL for mail.hackthissite.org
+2025-06-10 15:18:55,312 [ERROR] root: Error retrieving SSL certificate for mail.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:55,314 [INFO] src.Scanners.ssl_checker: Checking SSL for mirror.hackthissite.org
+2025-06-10 15:18:55,696 [ERROR] root: Error retrieving SSL certificate for mirror.hackthissite.org: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)
+2025-06-10 15:18:55,701 [INFO] src.Scanners.ssl_checker: Checking SSL for mta-sts.hackthissite.org
+2025-06-10 15:18:55,757 [ERROR] root: Error retrieving SSL certificate for mta-sts.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:55,761 [INFO] src.Scanners.ssl_checker: Checking SSL for new-irc.hackthissite.org
+2025-06-10 15:18:55,803 [ERROR] root: Error retrieving SSL certificate for new-irc.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:18:55,804 [INFO] src.Scanners.ssl_checker: Checking SSL for status.hackthissite.org
+2025-06-10 15:18:55,923 [INFO] src.Scanners.ssl_checker: Checking SSL for status-new.hackthissite.org
+2025-06-10 15:18:55,984 [ERROR] root: Error retrieving SSL certificate for status-new.hackthissite.org: [Errno 11001] getaddrinfo failed
+2025-06-10 15:19:28,411 [INFO] src.Scanners.port_scanner: Scanning ports on 185.199.111.153 (ctf.hackthissite.org)
+2025-06-10 15:20:55,592 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.102 (forum.hackthissite.org)
+2025-06-10 15:21:38,465 [INFO] src.Scanners.port_scanner: Scanning ports on 185.199.111.153 (h5ai.hackthissite.org)
+2025-06-10 15:21:55,391 [INFO] src.Scanners.port_scanner: Scanning ports on 185.24.222.13 (irc.hackthissite.org)
+2025-06-10 15:22:29,004 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.153 (www.irc.hackthissite.org)
+2025-06-10 15:23:50,850 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.152 (lille.irc.hackthissite.org)
+2025-06-10 15:24:31,496 [INFO] src.Scanners.port_scanner: Scanning ports on 185.24.222.13 (wolf.irc.hackthissite.org)
+2025-06-10 15:24:45,169 [INFO] src.Scanners.port_scanner: Scanning ports on 185.24.222.13 (irc-wolf.hackthissite.org)
+2025-06-10 15:24:58,842 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.137 (legal.hackthissite.org)
+2025-06-10 15:25:41,433 [INFO] src.Scanners.port_scanner: Scanning ports on 137.74.187.134 (mirror.hackthissite.org)
+2025-06-10 15:26:32,607 [INFO] src.Scanners.port_scanner: Scanning ports on 89.106.200.1 (status.hackthissite.org)

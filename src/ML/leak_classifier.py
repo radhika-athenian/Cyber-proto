@@ -1,17 +1,23 @@
-import json
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import joblib
 from pathlib import Path
 
-input_path = 'data/leaks.json'
-output_path = 'data/classified_leaks.json'
+from src.utils import config, helpers
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
+
+input_path = config.DATA_DIR / 'leaks.json'
+output_path = config.DATA_DIR / 'classified_leaks.json'
 
 # Load model & vectorizer
-clf = joblib.load('ML/models/leak_model.pkl')
-vectorizer = joblib.load('ML/models/vectorizer.pkl')
+clf = joblib.load(config.MODELS_DIR / 'leak_model.pkl')
+vectorizer = joblib.load(config.MODELS_DIR / 'vectorizer.pkl')
 
 # Load scraped leaks
-with open(input_path, 'r', encoding='utf-8') as f:
-    leaks = json.load(f)
+leaks = helpers.load_json(input_path, default=[])
 
 # Predict and label
 classified = []
@@ -23,7 +29,5 @@ for entry in leaks:
     classified.append(entry)
 
 # Save output
-with open(output_path, 'w', encoding='utf-8') as f:
-    json.dump(classified, f, indent=2)
-
-print(f"[✓] Classified {len(classified)} leaks and saved to {output_path}")
+helpers.save_json(classified, output_path)
+logger.info(f"Classified {len(classified)} leaks and saved to {output_path}")

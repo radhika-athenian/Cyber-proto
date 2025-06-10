@@ -1,5 +1,5 @@
 __pycache__/
 *.pyc
 data/
-AI/models/*.pkl
-AI/models/*.json
+src/ML/models/*.pkl
+src/ML/models/*.json

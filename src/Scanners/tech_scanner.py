@@ -1,10 +1,18 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 import argparse
-import json
 import os
 import re
 import requests
 from Wappalyzer import Wappalyzer, WebPage
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from src.utils import config, helpers
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def is_valid_hostname(hostname):
@@ -16,15 +24,14 @@ def is_valid_hostname(hostname):
 
 def load_domains(asset_file):
     """Load and validate subdomains from JSON asset file"""
-    with open(asset_file, 'r') as f:
-        data = json.load(f)
+    data = helpers.load_json(asset_file, default=[])
     domains = [entry['subdomain'].strip() for entry in data if 'subdomain' in entry]
     return [d for d in domains if is_valid_hostname(d)]
 
 
 def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
     url = f"https://{domain}"
-    print(f"[+] Scanning {url}")
+    logger.info(f"Scanning {url}")
     try:
         response = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
         webpage = WebPage.new_from_response(response)
@@ -32,7 +39,7 @@ def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
         if isinstance(tech, set):
             tech = list(tech)
     except Exception as e:
-        print(f"[-] Failed to scan {domain}: {e}")
+        logger.error(f"Failed to scan {domain}: {e}")
         tech = []
     return {"subdomain": domain, "technologies": tech}
 
@@ -50,9 +57,8 @@ def detect_technologies(domains, workers: int = 50, timeout: int = 3):
 
 def save_results(results, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, 'w') as f:
-        json.dump(results, f, indent=2)
-    print(f"[✓] Saved technology scan results to: {output_path}")
+    helpers.save_json(results, output_path)
+    logger.info(f"Saved technology scan results to: {output_path}")
 
 
 if __name__ == "__main__":
@@ -66,4 +72,4 @@ if __name__ == "__main__":
         results = detect_technologies(domains)
         save_results(results, args.output)
     except Exception as e:
-        print(f"[✗] Fatal error: {e}")
+        logger.exception(f"Fatal error: {e}")

@@ -1,11 +1,18 @@
 # scanners/port_scanner.py
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 
 import nmap
-import json
 import os
 from datetime import datetime
 
-OUTPUT_DIR = "data"
+from src.utils import config, helpers
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
+OUTPUT_DIR = str(config.DATA_DIR)
 
 def scan_ports(asset_list, ports="1-1000"):
     """Scans open ports on a list of assets with Nmap."""
@@ -17,7 +24,7 @@ def scan_ports(asset_list, ports="1-1000"):
         if not ip:
             continue
         try:
-            print(f"[+] Scanning ports on {ip} ({asset['subdomain']})...")
+            logger.info(f"Scanning ports on {ip} ({asset['subdomain']})")
             scanner.scan(ip, ports)
             ports_found = []
 
@@ -38,7 +45,7 @@ def scan_ports(asset_list, ports="1-1000"):
             })
 
         except Exception as e:
-            print(f"[!] Error scanning {ip}: {e}")
+            logger.error(f"Error scanning {ip}: {e}")
             results.append({
                 "subdomain": asset["subdomain"],
                 "ip": ip,
@@ -51,9 +58,8 @@ def scan_ports(asset_list, ports="1-1000"):
 def save_results(domain, data):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_file = os.path.join(OUTPUT_DIR, f"{domain}_ports_{timestamp}.json")
-    with open(output_file, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"[+] Port scan results saved to {output_file}")
+    helpers.save_json(data, output_file)
+    logger.info(f"Port scan results saved to {output_file}")
 
 if __name__ == "__main__":
     import argparse
@@ -63,8 +69,7 @@ if __name__ == "__main__":
     parser.add_argument("--input", required=True, help="Path to resolved subdomain JSON")
     args = parser.parse_args()
 
-    with open(args.input, "r") as f:
-        assets = json.load(f)
+    assets = helpers.load_json(args.input, default=[])
 
     results = scan_ports(assets)
     save_results(args.domain, results)

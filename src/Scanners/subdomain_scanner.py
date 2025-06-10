@@ -1,17 +1,21 @@
 # scanners/subdomain_scanner.py
-
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import subprocess
 import socket
-import json
 import os
 from datetime import datetime
 
-OUTPUT_DIR = "data"
-DOMAIN = "example.com"  # Replace or pass as argument
+from src.utils import config, helpers
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
+OUTPUT_DIR = str(config.DATA_DIR)
 
 def run_sublist3r(domain):
     """Runs Sublist3r to find subdomains."""
-    print(f"[+] Scanning subdomains for: {domain}")
+    logger.info(f"Scanning subdomains for: {domain}")
     try:
         result = subprocess.run(
             ["sublist3r", "-d", domain, "-o", f"{OUTPUT_DIR}/{domain}_subdomains.txt"],
@@ -19,9 +23,9 @@ def run_sublist3r(domain):
             capture_output=True,
             text=True
         )
-        print("[+] Sublist3r scan complete.")
+        logger.info("Sublist3r scan complete.")
     except subprocess.CalledProcessError as e:
-        print("[!] Sublist3r failed:", e.stderr)
+        logger.error(f"Sublist3r failed: {e.stderr}")
         return []
 
     with open(f"{OUTPUT_DIR}/{domain}_subdomains.txt", "r") as file:
@@ -37,6 +41,7 @@ def resolve_subdomains(subdomains):
             ip = socket.gethostbyname(sub)
             resolved.append({"subdomain": sub, "ip": ip})
         except socket.gaierror:
+            logger.warning(f"Unable to resolve {sub}")
             resolved.append({"subdomain": sub, "ip": None})
     return resolved
 
@@ -44,9 +49,8 @@ def save_results(domain, data):
     """Saves results as a JSON file."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_file = os.path.join(OUTPUT_DIR, f"{domain}_assets_{timestamp}.json")
-    with open(output_file, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"[+] Results saved to {output_file}")
+    helpers.save_json(data, output_file)
+    logger.info(f"Results saved to {output_file}")
 
 def main(domain):
     if not os.path.exists(OUTPUT_DIR):

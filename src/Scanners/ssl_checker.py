@@ -1,16 +1,21 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 import ssl
 import socket
 import json
 import os
 import argparse
+import logging
 from datetime import datetime
 from dateutil import parser as date_parser
 import pytz
-import logging
 
-# Set up logging
-logging.basicConfig(filename='ssl_check.log', level=logging.INFO,
-                    format='%(asctime)s %(levelname)s:%(message)s')
+from src.utils import config, helpers
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 def get_ssl_certificate(domain):
     try:
@@ -50,7 +55,7 @@ def scan_subdomains(subdomains):
     results = []
     for item in subdomains:
         domain = item["subdomain"]
-        print(f"[+] Checking SSL for {domain}")
+        logger.info(f"Checking SSL for {domain}")
         cert = get_ssl_certificate(domain)
         cert_info = parse_certificate_info(cert)
         cert_info["subdomain"] = domain
@@ -59,11 +64,10 @@ def scan_subdomains(subdomains):
 
 def save_results(domain, results):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_path = f"data/{domain}_ssl_results_{timestamp}.json"
-    os.makedirs("data", exist_ok=True)
-    with open(output_path, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"[✓] SSL scan results saved to {output_path}")
+    output_path = os.path.join(config.DATA_DIR, f"{domain}_ssl_results_{timestamp}.json")
+    os.makedirs(config.DATA_DIR, exist_ok=True)
+    helpers.save_json(results, output_path)
+    logger.info(f"SSL scan results saved to {output_path}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SSL Certificate Checker")
@@ -73,11 +77,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if not os.path.exists(args.input):
-        print(f"[!] Input file {args.input} not found.")
+        logger.error(f"Input file {args.input} not found.")
         exit(1)
 
-    with open(args.input, "r") as f:
-        subdomains = json.load(f)
+    subdomains = helpers.load_json(args.input, default=[])
 
     results = scan_subdomains(subdomains)
     save_results(args.domain, results)

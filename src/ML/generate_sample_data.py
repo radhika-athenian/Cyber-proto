@@ -2,7 +2,7 @@ import json
 import random
 import os
 
-OUTPUT_FILE = 'ai/models/sample_risk_training_data.json'
+OUTPUT_FILE = 'src\ML\models\sample_risk_training_data.json'
 NUM_SAMPLES = 100
 
 def generate_sample():

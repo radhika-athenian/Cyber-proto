@@ -1,12 +1,17 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 import os
 import json
 from datetime import datetime
-
-from Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
-from Scanners.port_scanner import scan_ports, save_results as save_ports
-from Scanners.ssl_checker import scan_subdomains as scan_ssl
-from Scanners.tech_scanner import load_domains, detect_technologies, save_results as save_tech
 from concurrent.futures import ThreadPoolExecutor
+
+from src.Scanners.subdomain_scanner import run_sublist3r, resolve_subdomains
+from src.Scanners.port_scanner import scan_ports, save_results as save_ports
+from src.Scanners.ssl_checker import scan_subdomains as scan_ssl
+from src.Scanners.tech_scanner import load_domains, detect_technologies, save_results as save_tech
+
 
 def save_json(domain, prefix, data):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -16,6 +21,7 @@ def save_json(domain, prefix, data):
         json.dump(data, f, indent=2)
     print(f"[✓] Saved {prefix} results to {filename}")
     return filename
+
 
 def run_all(domain, ports: str = "1-100", workers: int = 100):
     print(f"[•] Running all scanners for: {domain}")
@@ -27,9 +33,13 @@ def run_all(domain, ports: str = "1-100", workers: int = 100):
 
     # Run other scanners concurrently
     with ThreadPoolExecutor(max_workers=3) as executor:
-        future_ports = executor.submit(scan_ports, resolved, ports=ports, workers=workers)
-        future_ssl = executor.submit(scan_ssl, resolved, workers=workers)
-        future_tech = executor.submit(detect_technologies, [item['subdomain'] for item in resolved], workers=workers)
+        future_ports = executor.submit(scan_ports, resolved, ports=ports)
+        future_ssl = executor.submit(scan_ssl, resolved)
+        future_tech = executor.submit(
+            detect_technologies,
+            [item["subdomain"] for item in resolved],
+            workers=workers,
+        )
 
         port_results = future_ports.result()
         ssl_results = future_ssl.result()
@@ -44,6 +54,14 @@ def run_all(domain, ports: str = "1-100", workers: int = 100):
     print(f" - Ports: {ports_file}")
     print(f" - SSL: {ssl_file}")
     print(f" - Tech Stack: {tech_file}")
+
+    return {
+        "assets": assets_file,
+        "ports": ports_file,
+        "ssl": ssl_file,
+        "tech": tech_file,
+    }
+
 
 if __name__ == "__main__":
     import argparse

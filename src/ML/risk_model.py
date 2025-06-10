@@ -1,14 +1,20 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 import json
 import os
 import argparse
 import joblib
 import numpy as np
 
+
 def load_json(path):
     if os.path.exists(path):
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             return json.load(f)
     return []
+
 
 def build_features(asset_file, ports_file, ssl_file, leaks_file):
     assets = load_json(asset_file)
@@ -22,14 +28,14 @@ def build_features(asset_file, ports_file, ssl_file, leaks_file):
         if leak.get("label") == "sensitive":
             leak_map[domain] = leak_map.get(domain, 0) + 1
 
-    ssl_map = {item['subdomain']: item for item in ssl_data}
-    ports_map = {item['subdomain']: item['ports'] for item in ports_data}
+    ssl_map = {item["subdomain"]: item for item in ssl_data}
+    ports_map = {item["subdomain"]: item["ports"] for item in ports_data}
 
     features = []
     domains = []
 
     for entry in assets:
-        domain = entry['subdomain']
+        domain = entry["subdomain"]
         domains.append(domain)
 
         open_ports = ports_map.get(domain, [])
@@ -37,8 +43,8 @@ def build_features(asset_file, ports_file, ssl_file, leaks_file):
         risky_open = sum(1 for p in open_ports if p in high_risk_ports)
 
         ssl_info = ssl_map.get(domain, {})
-        ssl_expired = ssl_info.get('expired', False)
-        ssl_days = ssl_info.get('days_to_expiry', 0)
+        ssl_expired = ssl_info.get("expired", False)
+        ssl_days = ssl_info.get("days_to_expiry", 0)
         weak_ssl = ssl_expired or ssl_days < 15
 
         leak_count = leak_map.get(domain, 0)
@@ -48,19 +54,21 @@ def build_features(asset_file, ports_file, ssl_file, leaks_file):
             risky_open,
             int(weak_ssl),
             leak_count,
-            entry.get("subdomain_count", 1)
+            entry.get("subdomain_count", 1),
         ])
 
     return np.array(features), domains
 
-def score_domains(args):
-    X, domains = build_features(args.assets, args.ports, args.ssl, args.leaks)
-    model = joblib.load(args.model)
+
+def calculate_risk_scores(asset_file, ports_file, ssl_file, leaks_file, model_path):
+    """Return risk scores for each asset without writing to disk."""
+    X, domains = build_features(asset_file, ports_file, ssl_file, leaks_file)
+    model = joblib.load(model_path)
     scores = model.predict(X)
 
-    result = []
+    results = []
     for domain, score, row in zip(domains, scores, X):
-        result.append({
+        results.append({
             "subdomain": domain,
             "risk_score": int(min(max(score, 0), 100)),
             "details": {
@@ -68,24 +76,35 @@ def score_domains(args):
                 "high_risk_ports": int(row[1]),
                 "has_weak_ssl": bool(row[2]),
                 "leak_count": int(row[3]),
-                "subdomain_count": int(row[4])
-            }
+                "subdomain_count": int(row[4]),
+            },
         })
 
+    return results
+
+
+def score_domains(args):
+    results = calculate_risk_scores(
+        args.assets, args.ports, args.ssl, args.leaks, args.model
+    )
+
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(result, f, indent=2)
+    with open(args.output, "w") as f:
+        json.dump(results, f, indent=2)
 
     print(f"[+] Saved risk scores to {args.output}")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Risk scoring based on asset data")
-    parser.add_argument('--assets', required=True, help='Path to assets JSON file')
-    parser.add_argument('--ports', required=True, help='Path to ports JSON file')
-    parser.add_argument('--ssl', required=True, help='Path to SSL JSON file')
-    parser.add_argument('--leaks', required=True, help='Path to classified leaks JSON file')
-    parser.add_argument('--model', required=True, help='Path to trained ML model (.pkl)')
-    parser.add_argument('--output', default='data/risk_scores.json', help='Output path for results')
+    parser.add_argument("--assets", required=True, help="Path to assets JSON file")
+    parser.add_argument("--ports", required=True, help="Path to ports JSON file")
+    parser.add_argument("--ssl", required=True, help="Path to SSL JSON file")
+    parser.add_argument("--leaks", required=True, help="Path to classified leaks JSON file")
+    parser.add_argument("--model", required=True, help="Path to trained ML model (.pkl)")
+    parser.add_argument(
+        "--output", default="data/risk_scores.json", help="Output path for results"
+    )
 
     args = parser.parse_args()
     score_domains(args)
