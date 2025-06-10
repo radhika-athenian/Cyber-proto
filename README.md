@@ -12,6 +12,14 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+### Running Tests
+
+Use pytest to execute the unit test suite:
+
+```bash
+pytest
+```
+
 
 ### Running the Dashboard
 
