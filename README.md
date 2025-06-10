@@ -55,3 +55,7 @@ Risk scores can be generated in two ways:
    - When the ML model is not available, individual check scores are averaged to produce an overall risk value.
 
 Once integrated into the dashboard, either approach can be used to populate the tables with calculated risk scores.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
