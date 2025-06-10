@@ -1,5 +1,5 @@
 This repository contains a simple prototype for running asset scanners and visualizing risk scores.
-The scanners are built with asynchronous networking and ThreadPool executors to speed up execution.
+The scanners are built with asynchronous networking. The SSL and technology scanners now leverage `asyncio` to make concurrent requests for much faster execution. A small benchmark script is included to compare sequential and asynchronous modes.
 
 ### Requirements
 
@@ -38,6 +38,14 @@ You can also execute every scanner from the command line:
 
 ```bash
 python run_all.py --domain example.com --ports 1-100 --workers 100
+```
+
+### Benchmarking
+
+You can quickly gauge the benefit of the asynchronous scanners by running:
+
+```bash
+python benchmarks/benchmark_scanners.py
 ```
 
 Results will be saved under the `data/` directory with timestamped filenames.

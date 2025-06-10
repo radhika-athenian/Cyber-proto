@@ -2,8 +2,9 @@ import argparse
 import os
 import re
 import requests
+import asyncio
+import aiohttp
 from Wappalyzer import Wappalyzer, WebPage
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from src.utils import helpers
 from src.utils.logger import get_logger
@@ -25,15 +26,21 @@ def load_domains(asset_file):
     return [d for d in domains if is_valid_hostname(d)]
 
 
-def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
+async def _scan_domain_async(session, domain: str, wappalyzer, timeout: int) -> dict:
     url = f"https://{domain}"
     logger.info(f"Scanning {url}")
     try:
-        response = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
-        webpage = WebPage.new_from_response(response)
-        tech = wappalyzer.analyze(webpage)
-        if isinstance(tech, set):
-            tech = list(tech)
+        async with session.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"}) as response:
+            text = await response.text()
+            r = requests.Response()
+            r.status_code = response.status
+            r._content = text.encode()
+            r.headers = response.headers
+            r.url = str(response.url)
+            webpage = WebPage.new_from_response(r)
+            tech = wappalyzer.analyze(webpage)
+            if isinstance(tech, set):
+                tech = list(tech)
     except Exception as e:
         logger.error(f"Failed to scan {domain}: {e}")
         tech = []
@@ -41,14 +48,16 @@ def _scan_domain(domain: str, wappalyzer, timeout: int) -> dict:
 
 
 def detect_technologies(domains, workers: int = 50, timeout: int = 3):
-    """Use Wappalyzer to detect tech stack on domains in parallel."""
-    wappalyzer = Wappalyzer.latest()
-    results = []
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(_scan_domain, d, wappalyzer, timeout) for d in domains]
-        for future in as_completed(futures):
-            results.append(future.result())
-    return results
+    """Use Wappalyzer to detect tech stack on domains asynchronously."""
+
+    async def run_all():
+        wappalyzer = Wappalyzer.latest()
+        connector = aiohttp.TCPConnector(limit=workers, ssl=False)
+        async with aiohttp.ClientSession(connector=connector) as session:
+            tasks = [_scan_domain_async(session, d, wappalyzer, timeout) for d in domains]
+            return await asyncio.gather(*tasks)
+
+    return asyncio.run(run_all())
 
 
 def save_results(results, output_path):
